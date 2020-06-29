@@ -21,8 +21,9 @@ class CounterV1 extends Component {
     const { count, step } = this.state;
     this.setState({ count: count - step });
   }
-  handleChange() {
+  handleChange(event) {
     console.log('handleChange');
+    this.setState({ step: Number(event.target.value) });
   }
   render() {
     const { count, step } = this.state;

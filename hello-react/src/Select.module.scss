@@ -1,0 +1,28 @@
+@import 'variables';
+
+.host {
+  
+}
+
+.control {
+  border: 1px solid $select-border-color;
+  border-radius: 4px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.menu {
+  margin-top: 2px;
+  border: 1px solid $select-border-color;
+  border-radius: 4px;
+}
+
+.item {
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.item:hover {
+  background-color: lightgray;
+}
