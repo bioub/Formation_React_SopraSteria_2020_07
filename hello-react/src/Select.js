@@ -6,9 +6,12 @@ class Select extends Component {
     opened: false,
   };
   handleControlClick = () => {
+    const { opened = false } = this.state;
     this.setState({ opened: !opened });
   };
   handleItemClick = (el) => {
+    const { opened = false } = this.state;
+    const { onSelected = () => {} } = this.props;
     onSelected(el);
     this.setState({ opened: false });
   };
