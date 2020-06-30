@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "redux": "^4.0.5"
+  },
+  "prettier":{
+    "singleQuote": true
+  }
+}

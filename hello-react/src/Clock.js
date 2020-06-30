@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { format as formatDate } from 'date-fns'; 
 
 class Clock extends Component {
   constructor() {
@@ -6,15 +7,31 @@ class Clock extends Component {
     this.state = {
       now: new Date(),
     };
-    setInterval(() => {
+  }
+  componentDidMount() {
+    const { delay = 1000 } = this.props;
+    this._interval = setInterval(() => {
       this.setState({
         now: new Date(),
       });
-    }, 1000);
+    }, delay);
+  }
+  componentDidUpdate() {
+    const { delay = 1000 } = this.props;
+    clearInterval(this._interval);
+    this._interval = setInterval(() => {
+      this.setState({
+        now: new Date(),
+      });
+    }, delay);
+  }
+  componentWillUnmount() {
+    clearInterval(this._interval);
   }
   render() {
     const { now } = this.state;
-    return <div className="Clock">{now.toLocaleTimeString()}</div>;
+    const { format = 'HH:mm:ss' } = this.props;
+    return <div className="Clock">{formatDate(now, format)}</div>;
   }
 }
 
