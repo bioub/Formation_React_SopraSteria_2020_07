@@ -10,7 +10,6 @@ class Select extends Component {
     this.setState({ opened: !opened });
   };
   handleItemClick = (el) => {
-    const { opened = false } = this.state;
     const { onSelected = () => {} } = this.props;
     onSelected(el);
     this.setState({ opened: false });
@@ -20,7 +19,6 @@ class Select extends Component {
     const {
       items = ['Jean', 'Paul', 'Jacques'],
       selected = 'Jacques',
-      onSelected = () => {},
     } = this.props;
 
     return (
@@ -34,7 +32,7 @@ class Select extends Component {
               <div
                 key={el}
                 className={styles.item}
-                onClick={this.handleItemClick}
+                onClick={() => this.handleItemClick(el)}
               >
                 {el}
               </div>
