@@ -1,30 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectCount, selectStep } from './store/selectors';
+import { bindActionCreators } from 'redux';
+import { decrement, setStep, increment } from './store/actions';
 
 function CounterHooks() {
-  const [count, setCount] = useState(0); // count
-  const [step, setStep] = useState(1); // step
+  const count = useSelector(selectCount); // count
+  const step = useSelector(selectStep); // step
+  const dispatch = useDispatch();
 
-  function increment() {
-    console.log('increment');
-    setCount(count + step);
-  }
-
-  function decrement() {
-    console.log('decrement');
-    setCount(count - step);
-  }
-
-  function handleChange(event) {
-    console.log('handleChange');
-    setStep(Number(event.target.value));
-  }
+  const handleIncrement = bindActionCreators(increment, dispatch)
+  const handleDecrement = bindActionCreators(decrement, dispatch)
+  const handleChange = bindActionCreators(setStep, dispatch)
 
   return (
     <div className="CounterHooks">
       <div>
-        Step : <input type="number" value={step} onChange={handleChange}  />
-        <button onClick={increment}>+</button>
-        <button onClick={decrement}>-</button>
+        Step : <input type="number" value={step} onChange={(e) => handleChange(Number(e.target.value))}  />
+        <button onClick={() => handleIncrement(step)}>+</button>
+        <button onClick={() => handleDecrement(step)}>-</button>
       </div>
       <div>Count : {count}</div>
     </div>
