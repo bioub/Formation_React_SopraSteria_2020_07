@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class CounterV2 extends Component {
+class Counter extends Component {
   state = {
     count: 0,
     step: 1,
@@ -24,7 +24,7 @@ class CounterV2 extends Component {
   render() {
     const { count, step } = this.state;
     return (
-      <div className="CounterV2">
+      <div className="Counter">
         <div>
           Step : <input type="number" value={step} onChange={this.handleChange}  />
           <button onClick={this.increment}>+</button>
@@ -36,4 +36,4 @@ class CounterV2 extends Component {
   }
 }
 
-export default CounterV2;
+export default Counter;
