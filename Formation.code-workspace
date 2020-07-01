@@ -14,6 +14,9 @@
 		},
 		{
 			"path": "hello-react-redux"
+		},
+		{
+			"path": "todo-redux"
 		}
 	],
 	"settings": {}

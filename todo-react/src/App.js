@@ -1,21 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 
 function App() {
   const [newTodoText, setNewTodoText] = useState("Achet");
-  const [todos, setTodos] = useState([
-    {
-      id: 123,
-      completed: false,
-      title: "Acheter du pain",
-    },
-    {
-      id: 456,
-      completed: true,
-      title: "Introduction à React",
-    },
-  ]);
+  const [todos, setTodos] = useState((new Array(1000)).fill({}).map((el) => ( {
+    id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER),
+    completed: Math.random() > 0.5,
+    title: "Text",
+  })));
   function handleTodoSubmit(value) {
     // changement muable
     // todos.push({
@@ -35,9 +28,11 @@ function App() {
       },
     ]);
   }
-  function handleDeleteTodo(todo) {
+
+  const handleDeleteTodo = useCallback(function handleDeleteTodo(todo) {
     setTodos(todos.filter((t) => t.id !== todo.id));
-  }
+  }, [todos]);
+
   return (
     <div className="App">
       <TodoForm

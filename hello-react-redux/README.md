@@ -81,4 +81,4 @@ Qui doit dispatcher les actions correspondant (celle testées via l'extension)
 
 Si possible créer les actions via des actions creators (actions.js)
 
-## Optionnel (TODO_DELETE)
+## Optionnel (TODO_DELETE)  
