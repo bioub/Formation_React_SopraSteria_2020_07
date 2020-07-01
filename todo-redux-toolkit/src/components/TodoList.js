@@ -1,7 +1,10 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import TodoItem from './TodoItem';
 
-function TodoList({ items = [], onDelete = () => {} }) {
+function TodoList({ items = [], onDelete = () => {}, onMount = () => {} }) {
+  useEffect(() => {
+    onMount();
+  }, [onMount]);
   return (
     <div className="TodoList">
       {items.map((el) => (

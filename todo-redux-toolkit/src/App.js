@@ -1,14 +1,21 @@
 import React from 'react';
-import TodoFormContainer from './containers/TodoFormContainer';
-import TodoListContainer from './containers/TodoListContainer';
-import TodoFooterContainer from './containers/TodoFooterContainer';
+import { Route, Link } from 'react-router-dom';
+import Home from './components/Home';
+import Hello from './components/Hello';
+import Todos from './components/Todos';
 
 function App() {
   return (
     <div className="App">
-      <TodoFormContainer />
-      <TodoListContainer />
-      <TodoFooterContainer />
+      <nav> 
+        <Link to="/">Home</Link>
+        <Link to="/hello/Romain">Hello Romain</Link>
+        <Link to="/hello/Toto">Hello Toto</Link>
+        <Link to="/todos">Todos</Link>
+      </nav>
+      <Route path="/" component={Home} exact={true} />
+      <Route path="/hello/:name" component={Hello} />
+      <Route path="/todos" component={Todos}/>
     </div>
   );
 }
