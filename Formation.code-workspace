@@ -20,6 +20,9 @@
 		},
 		{
 			"path": "hello-redux-toolkit"
+		},
+		{
+			"path": "todo-redux-toolkit"
 		}
 	],
 	"settings": {}
